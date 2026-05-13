@@ -1,0 +1,117 @@
+import java.util.*;
+
+class ATM {
+
+    double balance = 5000;
+
+    void checkBalance() {
+
+        System.out.println("Balance = " + balance);
+    }
+
+    void deposit(double amount) {
+
+        balance = balance + amount;
+
+        System.out.println("Amount Deposited");
+    }
+
+    void withdraw(double amount) {
+
+        try {
+
+            if (amount > balance) {
+
+                throw new ArithmeticException("Insufficient Balance");
+            }
+
+            if (amount <= 0) {
+
+                throw new IllegalArgumentException("Invalid Amount");
+            }
+
+            balance = balance - amount;
+
+            System.out.println("Withdraw Successful");
+        }
+
+        catch (ArithmeticException e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        catch (IllegalArgumentException e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        finally {
+
+            System.out.println("Transaction Completed");
+        }
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        ATM a = new ATM();
+
+        int choice;
+        double amount;
+
+        do {
+
+            System.out.println("\n1.Check Balance");
+
+            System.out.println("2.Deposit");
+
+            System.out.println("3.Withdraw");
+
+            System.out.println("4.Exit");
+
+            System.out.println("Enter choice:");
+
+            choice = sc.nextInt();
+
+            switch(choice) {
+
+                case 1:
+
+                    a.checkBalance();
+                    break;
+
+                case 2:
+
+                    System.out.println("Enter amount:");
+                    amount = sc.nextDouble();
+
+                    a.deposit(amount);
+                    break;
+
+                case 3:
+
+                    System.out.println("Enter amount:");
+                    amount = sc.nextDouble();
+
+                    a.withdraw(amount);
+                    break;
+
+                case 4:
+
+                    System.out.println("Thank You");
+                    break;
+
+                default:
+
+                    System.out.println("Invalid Choice");
+            }
+
+        } while(choice != 4);
+
+        sc.close();
+    }
+}
