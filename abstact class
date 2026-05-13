@@ -1,0 +1,38 @@
+abstract class Employee {
+
+    int id = 101;
+    String name = "Kartik";
+
+    void display() {
+
+        System.out.println("Employee ID = " + id);
+
+        System.out.println("Employee Name = " + name);
+    }
+
+    // Abstract method
+    abstract void salary();
+}
+
+// Child class
+class Manager extends Employee {
+
+    int sal = 50000;
+
+    void salary() {
+
+        System.out.println("Salary = " + sal);
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Manager m = new Manager();
+
+        m.display();
+
+        m.salary();
+    }
+}
