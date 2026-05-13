@@ -1,0 +1,50 @@
+class Student {
+
+    int roll;
+    String name;
+
+    void getData() {
+
+        roll = 101;
+        name = "Kartik";
+    }
+
+    void display() {
+
+        System.out.println("Roll No = " + roll);
+
+        System.out.println("Name = " + name);
+    }
+}
+
+// Child class
+class Result extends Student {
+
+    int marks;
+
+    void getMarks() {
+
+        marks = 85;
+    }
+
+    void showMarks() {
+
+        System.out.println("Marks = " + marks);
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Result r = new Result();
+
+        r.getData();
+
+        r.getMarks();
+
+        r.display();
+
+        r.showMarks();
+    }
+}
