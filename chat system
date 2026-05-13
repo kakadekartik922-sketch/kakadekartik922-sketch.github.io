@@ -1,0 +1,68 @@
+import java.util.*;
+
+class A extends Thread {
+
+    String msg;
+
+    A(String msg) {
+
+        this.msg = msg;
+    }
+
+    public void run() {
+
+        for(int i = 1; i <= 3; i++) {
+
+            System.out.println(msg);
+
+            try {
+
+                Thread.sleep(500);
+            }
+
+            catch(Exception e) {
+
+                System.out.println(e);
+            }
+        }
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) throws Exception {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter first message:");
+        String m1 = sc.nextLine();
+
+        System.out.println("Enter second message:");
+        String m2 = sc.nextLine();
+
+        A t1 = new A(m1);
+
+        A t2 = new A(m2);
+
+        // Priority
+        t1.setPriority(10);
+
+        t2.setPriority(1);
+
+        t1.start();
+
+        t2.start();
+
+        // isAlive
+        System.out.println("Thread status: " + t1.isAlive());
+
+        // join
+        t1.join();
+
+        t2.join();
+
+        System.out.println("Chat Ended");
+
+        sc.close();
+    }
+}
