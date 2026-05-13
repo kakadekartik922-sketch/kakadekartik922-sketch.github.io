@@ -1,0 +1,88 @@
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int n;
+
+        System.out.println("Enter size of array:");
+        n = sc.nextInt();
+
+        int arr[] = new int[n];
+
+        // Input array
+        System.out.println("Enter array elements:");
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        // Display array
+        System.out.println("Array elements are:");
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+        // Max and Min
+        int max = arr[0];
+        int min = arr[0];
+
+        for (int i = 0; i < n; i++) {
+
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+
+        // Sum
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+        }
+
+        // Average
+        double avg = (double)sum / n;
+
+        // Searching
+        int key;
+        boolean found = false;
+
+        System.out.println("\nEnter element to search:");
+        key = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+
+            if (arr[i] == key) {
+                found = true;
+                break;
+            }
+        }
+
+        // Output
+        System.out.println("\nMaximum = " + max);
+
+        System.out.println("Minimum = " + min);
+
+        System.out.println("Sum = " + sum);
+
+        System.out.println("Average = " + avg);
+
+        if (found) {
+            System.out.println("Element found");
+        }
+        else {
+            System.out.println("Element not found");
+        }
+
+        sc.close();
+    }
+}
