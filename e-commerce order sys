@@ -1,0 +1,106 @@
+import java.util.*;
+
+class Product {
+
+    String name;
+    double price;
+    int quantity;
+
+    // Default constructor
+    Product() {
+        name = "Unknown";
+        price = 0.0;
+        quantity = 0;
+    }
+
+    // Constructor with 2 parameters
+    Product(String n, double p) {
+        name = n;
+        price = p;
+        quantity = 1;
+    }
+
+    // Constructor with 3 parameters
+    Product(String n, double p, int q) {
+        name = n;
+        price = p;
+        quantity = q;
+    }
+
+    // Method to calculate product cost
+    double getCost() {
+        return price * quantity;
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        Product products[] = new Product[10];
+
+        int n;
+        double total = 0;
+        double discount = 0;
+        double finalAmount;
+
+        System.out.println("Enter number of products:");
+        n = sc.nextInt();
+
+        // Taking product details
+        for (int i = 0; i < n; i++) {
+
+            System.out.println("\nEnter product name:");
+            String name = sc.next();
+
+            System.out.println("Enter product price:");
+            double price = sc.nextDouble();
+
+            System.out.println("Enter quantity:");
+            int quantity = sc.nextInt();
+
+            // Using overloaded constructor
+            products[i] = new Product(name, price, quantity);
+        }
+
+        // Calculating total bill
+        for (int i = 0; i < n; i++) {
+            total = total + products[i].getCost();
+        }
+
+        // Applying discount
+        if (total >= 5000) {
+            discount = total * 0.20;
+        }
+        else if (total >= 3000) {
+            discount = total * 0.10;
+        }
+        else {
+            discount = 0;
+        }
+
+        finalAmount = total - discount;
+
+        // Invoice
+        System.out.println("\n========= INVOICE =========");
+
+        for (int i = 0; i < n; i++) {
+
+            System.out.println(
+                products[i].name + "  " +
+                products[i].quantity + " x " +
+                products[i].price +
+                " = " + products[i].getCost()
+            );
+        }
+
+        System.out.println("----------------------------");
+        System.out.println("Total Amount = " + total);
+        System.out.println("Discount = " + discount);
+        System.out.println("Final Amount = " + finalAmount);
+
+        sc.close();
+    }
+}
